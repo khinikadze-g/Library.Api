@@ -44,29 +44,42 @@ app.MapPost("books", async (Book book, IBookService bookService, IValidator<Book
         return Results.BadRequest(new List<ValidationFailure>{new ("Isbn", "a book with this Isbn already exists")});
     }
     return Results.Created($"/books/{book.Isbn}", book);
-});
+}).WithName("CreateBook")
+    .Accepts<Book>("application/json")
+    .Produces<Book>(201)
+    .Produces<IEnumerable<ValidationFailure>>(400)
+    .WithTags("Books");
 
 app.MapGet("books", async (IBookService bookservice) =>
 {
     var books = await bookservice.GetAllAsync();
     return Results.Ok(books);
-});
+}).Produces<Book>(200)
+    .WithTags("Books");
 
 app.MapGet("/books/{isbn}", async (string isbn, IBookService bookservice) =>
 {
     var book = await bookservice.GetByIsbnAsync(isbn);
     return book is not null ? Results.Ok(book) : Results.NotFound();
-});
+}).Produces<Book>(200)
+    .Produces(404)
+    .WithTags("Books");
 
 app.MapPut("/books/{isbn}", async (string isbn, Book book, IBookService bookservice) =>
 {
     var updatedBook = await bookservice.UpdateAsync(isbn, book);
     return updatedBook is not null ? Results.Ok() : Results.NotFound();
-});
+}).Accepts<Book>("application/json")
+    .Produces<Book>(204)
+    .Produces<IEnumerable<ValidationFailure>>(400)
+    .WithTags("Books");
+
 app.MapDelete("/books/{isbn}", async (string isbn, IBookService bookservice) =>
 {
     return await bookservice.DeleteAsync(isbn);
-});
+}).Produces<Book>(200)
+    .Produces(404)
+    .WithTags("Books");
 
 
 

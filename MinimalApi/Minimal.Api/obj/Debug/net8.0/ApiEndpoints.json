@@ -15,11 +15,24 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "System.Void",
-        "MediaTypes": [],
-        "StatusCode": 200
+        "Type": "Minimal.Api.Models.Book",
+        "MediaTypes": [
+          "application/json"
+        ],
+        "StatusCode": 201
+      },
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[FluentValidation.Results.ValidationFailure, FluentValidation, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7de548da2fbae0f0]]",
+        "MediaTypes": [
+          "application/json"
+        ],
+        "StatusCode": 400
       }
-    ]
+    ],
+    "Tags": [
+      "Books"
+    ],
+    "EndpointName": "CreateBook"
   },
   {
     "ContainingType": "Program\u002B\u003C\u003Ec",
@@ -31,10 +44,15 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Void",
-        "MediaTypes": [],
+        "Type": "Minimal.Api.Models.Book",
+        "MediaTypes": [
+          "application/json"
+        ],
         "StatusCode": 200
       }
+    ],
+    "Tags": [
+      "Books"
     ]
   },
   {
@@ -53,10 +71,20 @@
     ],
     "ReturnTypes": [
       {
+        "Type": "Minimal.Api.Models.Book",
+        "MediaTypes": [
+          "application/json"
+        ],
+        "StatusCode": 200
+      },
+      {
         "Type": "System.Void",
         "MediaTypes": [],
-        "StatusCode": 200
+        "StatusCode": 404
       }
+    ],
+    "Tags": [
+      "Books"
     ]
   },
   {
@@ -80,10 +108,22 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "System.Void",
-        "MediaTypes": [],
-        "StatusCode": 200
+        "Type": "Minimal.Api.Models.Book",
+        "MediaTypes": [
+          "application/json"
+        ],
+        "StatusCode": 204
+      },
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[FluentValidation.Results.ValidationFailure, FluentValidation, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7de548da2fbae0f0]]",
+        "MediaTypes": [
+          "application/json"
+        ],
+        "StatusCode": 400
       }
+    ],
+    "Tags": [
+      "Books"
     ]
   },
   {
@@ -102,12 +142,22 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "System.Nullable\u00601[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "Type": "Minimal.Api.Models.Book",
         "MediaTypes": [
           "application/json"
         ],
         "StatusCode": 200
+      },
+      {
+        "Type": "System.Nullable\u00601[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "MediaTypes": [
+          "application/json"
+        ],
+        "StatusCode": 404
       }
+    ],
+    "Tags": [
+      "Books"
     ]
   }
 ]
